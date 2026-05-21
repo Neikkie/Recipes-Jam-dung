@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jam-dung | Authentic Jamaican Recipes</title>
+  <meta name="description" content="Official website for Jam-dung, an authentic Jamaican recipes app with favourites, recipe details, and step-by-step cooking guidance." />
+  <style>
+    :root {
+      --green: #0b8c34;
+      --green-dark: #066326;
+      --gold: #f5c542;
+      --cream: #fffaf0;
+      --white: #ffffff;
+      --ink: #1f2937;
+      --muted: #5b6472;
+      --line: rgba(11, 140, 52, 0.12);
+      --shadow: 0 20px 50px rgba(11, 140, 52, 0.16);
+      --radius: 24px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(245, 197, 66, 0.35), transparent 30%),
+        linear-gradient(145deg, #f7fff6 0%, #eef9f1 46%, #fff7e7 100%);
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      padding: 18px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 999px;
+      padding: 12px 18px;
+      box-shadow: 0 10px 24px rgba(31, 41, 55, 0.07);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 20px 0 56px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: var(--white);
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(245, 197, 66, 0.18);
+      top: -40px;
+      right: -40px;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: 24%;
+      height: 52px;
+      transform: rotate(-7deg);
+      background: rgba(245, 197, 66, 0.18);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      padding: 56px 42px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+    }
+
+    h1 {
+      margin: 16px 0 14px;
+      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      line-height: 0.95;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 620px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.04rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.18s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .button-primary {
+      background: var(--gold);
+      color: #201902;
+      box-shadow: 0 10px 22px rgba(245, 197, 66, 0.26);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .feature-panel {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 22px;
+      align-self: end;
+    }
+
+    .feature-panel h2 {
+      margin: 0 0 14px;
+      font-size: 1.1rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .section {
+      padding: 0 0 22px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.55rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(31, 41, 55, 0.06);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .cta {
+      margin: 26px 0 40px;
+      background: linear-gradient(135deg, #fff7de 0%, #ffffff 100%);
+      border: 1px solid rgba(245, 197, 66, 0.35);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 14px 28px rgba(245, 197, 66, 0.12);
+    }
+
+    .cta p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      padding: 18px 0 48px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner, .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 20px)); }
+      .nav-inner { border-radius: 24px; align-items: flex-start; }
+      .hero-inner { padding: 34px 20px; }
+      .card, .cta { padding: 20px; }
+      h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav wrap">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Jam-dung 🇯🇲</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="usage.html">Usage</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div>
+            <span class="eyebrow">Official App Site</span>
+            <h1>Authentic Jamaican recipes in one simple app.</h1>
+            <p>
+              Jam-dung is a recipe app focused on authentic Jamaican dishes. Browse recipe collections,
+              search for meals, explore breakfast, lunch, and dinner categories, save favourites, and view
+              ingredients and step-by-step cooking instructions in a clean, easy-to-use experience.
+            </p>
+            <div class="actions">
+              <a class="button button-primary" href="mailto:support.chaniiapps@gmail.com?subject=Jam-dung%20Support%20Request">Contact Support</a>
+              <a class="button button-secondary" href="usage.html">How to Use the App</a>
+            </div>
+          </div>
+
+          <aside class="feature-panel">
+            <h2>Inside Jam-dung</h2>
+            <div class="feature-list">
+              <div class="feature-item">
+                <strong>Search Recipes</strong>
+                Find meals quickly by name.
+              </div>
+              <div class="feature-item">
+                <strong>Meal Categories</strong>
+                Browse breakfast, lunch, and dinner ideas.
+              </div>
+              <div class="feature-item">
+                <strong>Save Favourites</strong>
+                Keep your go-to dishes easy to revisit.
+              </div>
+              <div class="feature-item">
+                <strong>Cook Step by Step</strong>
+                View ingredients and instructions clearly.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">What the app does</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Browse Jamaican dishes</h3>
+          <p>
+            Jam-dung presents a collection of Jamaican recipes and organizes them into meal-time categories
+            so it is easy to discover new dishes for different times of day.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>See the details that matter</h3>
+          <p>
+            Each recipe can include a featured image, ingredient list with measurements, and cooking instructions
+            displayed in a simple step-by-step format.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Keep favourites nearby</h3>
+          <p>
+            Users can save favourite recipes directly in the app for quicker access later without having to search again.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 class="section-title">Need help?</h2>
+      <p>
+        For support, bug reports, or feedback about Jam-dung, email
+        <a href="mailto:support.chaniiapps@gmail.com">support.chaniiapps@gmail.com</a>.
+        If you are reporting an issue, it helps to include your device model, iOS version,
+        a short description of the problem, and screenshots if available.
+      </p>
+      <a class="button button-primary" href="mailto:support.chaniiapps@gmail.com?subject=Jam-dung%20Feedback">Send Feedback</a>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Jam-dung • Authentic Jamaican Recipes</p>
+  </footer>
+</body>
+</html>
